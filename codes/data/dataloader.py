@@ -176,9 +176,11 @@ class MultiModalCancerDataset(Dataset):
         
         if self.root is not None and self.df is not None:
             data = self.df.iloc[idx]
+            slide = data['Slide']
+            patch = data['Patch']
             BF_image, FL_image, MM_image = None, None, None
             if self.mode in ['BF', 'MM']:
-                BF_path = os.path.join(self.root, data['BF_path'])
+                BF_path = os.path.join(self.root, f'./BF/{slide:02d}/patch_{patch}.tif')
                 BF_image = Image.open(BF_path)
             
                 warnings.filterwarnings("ignore", category=UserWarning, module="PIL.TiffImagePlugin")
@@ -187,7 +189,7 @@ class MultiModalCancerDataset(Dataset):
                     FL_image, MM_image = BF_image, BF_image
 
             if self.mode in ['FL', 'MM']:
-                FL_path = os.path.join(self.root, data['FL_path'])
+                FL_path = os.path.join(self.root, f'./FL/{slide:02d}/patch_{patch}.tif')
                 FL_image = Image.open(FL_path)
                 # FL_image = FL_image.convert("RGB")
                 FL_image = self.transform_FL(FL_image)
@@ -208,7 +210,7 @@ class MultiModalCancerDataset(Dataset):
                 MM_image = self.transform_train(MM_image)
 
             label = data['Diagnosis']
-            name = data['Names']
+            name = f"{data['Slide']}_{data['Patch']}"
             data_dict = {'BF': BF_image, 'FL': FL_image, 'MM': MM_image, 'label': label, 'name': name}
             if self.split == 'cl':
                 return data_dict[self.mode], data_dict['label']
