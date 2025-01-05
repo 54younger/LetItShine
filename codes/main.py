@@ -70,21 +70,20 @@ def main(args):
         log_path = f'logs/{args.name}_{mode_name}_{args.run_name}/fold_{i+1}'
         os.makedirs(log_path, exist_ok=True)
 
-        if args.retrain:
-            job_type = "retrain"
-            path_to_train_csv = f'{args.path_to_train_csv}/fold_{i+1}/train_all.csv'
-            path_to_val_csv = f'{args.path_to_val_csv}/fold_{i+1}/test.csv'
-            path_to_test_csv = f'{args.path_to_test_csv}/fold_{i+1}/test.csv'
-        else:
-            job_type = "train"
-            path_to_train_csv = f'{args.path_to_train_csv}/fold_{i+1}/train.csv'
-            path_to_val_csv = f'{args.path_to_val_csv}/fold_{i+1}/val.csv'
-            path_to_test_csv = f'{args.path_to_test_csv}/fold_{i+1}/test.csv'            
-            
-      
+        path_to_train_csv = f'{args.path_to_train_csv}/fold_{i+1}/train.csv'
+        path_to_val_csv = f'{args.path_to_val_csv}/fold_{i+1}/val.csv'
+        path_to_test_csv = f'{args.path_to_test_csv}/fold_{i+1}/test.csv'
+
         train_df = pd.read_csv(path_to_train_csv)
         val_df = pd.read_csv(path_to_val_csv)
         test_df = pd.read_csv(path_to_test_csv)
+
+        if args.retrain:
+            job_type = "retrain"
+            train_df = pd.concat([train_df, val_df], ignore_index=True)
+        else:
+            job_type = "train"
+      
 #######################################################
         group = args.run_name
         if mode_name=='MM':
