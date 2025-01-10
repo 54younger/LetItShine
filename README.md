@@ -16,9 +16,7 @@ Code and links to data to appear shortly.
 
 </p>
 
-## Install
-
-On an NVIDIA A100 GPU, with CUDA toolkit enabled.
+## Installation
 
 1. Download the code and navigate to the project directory:
 ```
@@ -29,8 +27,53 @@ cd LetItShine
 2. Set up the environment with all required dependencies:
 
 ```Shell
-conda env create -f environment.yaml
+conda env create -f environment.yml
 conda activate shine
+```
+
+## Training
+This code automatically logs metrics for each fold and epoch using **Weights & Biases (wandb)**. The logged metrics include:
+
+- **Accuracy**
+- **F1 Score**
+- **Precision**
+- **Recall**
+- **ROC AUC Score**
+
+By default, the training process integrates with wandb to help you monitor your experiments effectively.
+
+---
+## Basic Training Commands
+
+Here are the simplest commands to start training with different configurations. These commands are provided as quick-start examples. You can customize the training process further by including additional optional arguments listed in the table below.
+
+### 1. Train with Brightfield (BF) Images Only
+```
+python main.py --mode BF --channel 3 --mixup --retrain
+```
+### 2. Train with Fluorescence (FL) Images Only
+```
+python main.py --mode FL --channel 4 --mixup --retrain
+```
+### 3. Train with Early Fusion of Two Modalities
+```
+python main.py --mode MM --channel 7 --fusion_mode E --mixup --retrain
+```
+### 4. Train with Late Fusion of Two Modalities
+```
+python main.py --mode MM --channel 7 --fusion_mode L --mixup --retrain
+```
+### 5. Train with MMTM (Multimodal Transfer Module)
+```
+python main.py --name mmtm --mode MM --channel 7 --fusion_mode I --mixup --retrain
+```
+### 6. Train with HcCNN (Hyper-connected Convolutional Neural Network)
+```
+python main.py --name hccnn --mode MM --channel 7 --fusion_mode I --mixup --retrain
+```
+### 7. Train with CAFNet (Co-Attention Fusion Network)
+```
+python main.py --batch_size 128 --name cafnet --mode MM --channel 7 --fusion_mode I --mixup --retrain
 ```
 
 ## Citations
