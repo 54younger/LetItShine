@@ -16,6 +16,23 @@ Code and links to data to appear shortly.
 
 </p>
 
+## Install
+
+On an NVIDIA A100 GPU, with CUDA toolkit enabled.
+
+1. Download the code and navigate to the project directory:
+```
+git clone https://github.com/MIDA-group/LetItShine.git
+cd LetItShine
+```
+
+2. Set up the environment with all required dependencies:
+
+```Shell
+conda env create -f environment.yaml
+conda activate shine
+```
+
 ## Citations
 If our code helps your research or work, please consider citing our paper.
 The following are BibTeX references:
