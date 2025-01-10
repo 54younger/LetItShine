@@ -93,14 +93,15 @@ python main.py --batch_size 128 --name cafnet --mode MM --channel 7 --fusion_mod
 | `--fusion_mode`     | `E`         | Fusion mode for multi-modal inputs. Options: `[E, L, I]`.                                        |
 | `--mixup`           | `True`     | Enable mixup augmentation. Use `--mixup` to activate.                                            |
 | `--retrain`         | `True`     | Enable retraining with the validation set. Use `--retrain` to activate.                         |
-| `--CL`              | `False`     | Enable contrastive learning. Use `--CL` to activate. Ignore this one.                                             |
-| `--pretrained`      | `False`     | Use a pretrained model. Use `--pretrained` to activate. Ignore this one.                                          |
-| `--freeze`          | `False`     | Freeze weights during training. Use `--freeze` to activate. Ignore this one.                                     |
+| ~~`--CL`~~              | ~~`False`~~     | ~~Enable contrastive learning. Use `--CL` to activate. Ignore this one.~~                                             |
+| ~~`--pretrained`~~      | ~~`False`~~ | ~~Use a pretrained model. Use `--pretrained` to activate. Ignore this one.~~                                          |
+| ~~`--freeze`~~          | ~~`False`~~     | ~~Freeze weights during training. Use `--freeze` to activate. Ignore this one.~~                                    |
 | `--wd`              | `0.1`       | Weight decay for regularization.                                                                |
 
 You can customize your training process further by combining these optional arguments with the basic training commands. For example:
-```bash
+```
 python main.py --mode BF --batch_size 128 --lr 1e-4 --epochs 50 --mixup
+```
 
 ## Citations
 If our code helps your research or work, please consider citing our paper.
