@@ -76,6 +76,32 @@ python main.py --name hccnn --mode MM --channel 7 --fusion_mode I --mixup --retr
 python main.py --batch_size 128 --name cafnet --mode MM --channel 7 --fusion_mode I --mixup --retrain
 ```
 
+---
+## Optional Arguments
+
+| **Argument**       | **Default** | **Description**                                                                                   |
+|---------------------|-------------|---------------------------------------------------------------------------------------------------|
+| `--crop_size`       | `224`       | Crop size for input images (e.g., `224x224`).                                                    |
+| `--epochs`          | `30`        | Number of training epochs.                                                                       |
+| `--batch_size`      | `256`       | Number of samples per batch.                                                                     |
+| `--lr`              | `8e-5`      | Learning rate for the optimizer.                                                                 |
+| `--name`            | `resnet50`  | Model name. Options: `[resnet50]` for single model, `[cafnet, hccnn, mmtm]` for intermediate fusion. |
+| `--mode`            | `MM`        | Input mode. Options: `[BF, FL, MM]`. MM indicates multi-modal inputs.                           |
+| `--channel`         | `7`         | Number of input channels. Options: `3` for BF, `4` for FL, and `7` for MM.                      |
+| `--fold`            | `0`         | Fold number for cross-validation. Options: `[0, 1, 2]`.                                          |
+| `--run_name`        | `early_fusion` | Run name to identify the experiment.                                                            |
+| `--fusion_mode`     | `E`         | Fusion mode for multi-modal inputs. Options: `[E, L, I]`.                                        |
+| `--mixup`           | `True`     | Enable mixup augmentation. Use `--mixup` to activate.                                            |
+| `--retrain`         | `True`     | Enable retraining with the validation set. Use `--retrain` to activate.                         |
+| `--CL`              | `False`     | Enable contrastive learning. Use `--CL` to activate. Ignore this one.                                             |
+| `--pretrained`      | `False`     | Use a pretrained model. Use `--pretrained` to activate. Ignore this one.                                          |
+| `--freeze`          | `False`     | Freeze weights during training. Use `--freeze` to activate. Ignore this one.                                     |
+| `--wd`              | `0.1`       | Weight decay for regularization.                                                                |
+
+You can customize your training process further by combining these optional arguments with the basic training commands. For example:
+```bash
+python main.py --mode BF --batch_size 128 --lr 1e-4 --epochs 50 --mixup
+
 ## Citations
 If our code helps your research or work, please consider citing our paper.
 The following are BibTeX references:
