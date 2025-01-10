@@ -3,7 +3,7 @@
 ## Let it shine: Autofluorescence of Papanicolaou-stain improves AI-based cytological oral cancer detection
 Wenyi Lian, Joakim Lindblad, Christina Runow Stark, Jan-Michaél Hirsch, Nataša Sladoje
 
-[[`Journal Link`]:(https://www.sciencedirect.com/science/article/pii/S001048252401583X)] [[`BibTeX`]:(#Citation)] [[`Preprint`]: (https://arxiv.org/abs/2407.01869)
+[[`Journal Link`] (https://www.sciencedirect.com/science/article/pii/S001048252401583X)] [[`BibTeX`] (#Citation)] [[`Preprint`] (https://arxiv.org/abs/2407.01869)
 
 Code and links to data to appear shortly.
 
