@@ -7,7 +7,16 @@ Preprint: https://arxiv.org/abs/2407.01869
 
 Code and links to data to appear shortly.
 
-#### Citations
+## Graphical Abstract
+
+<p align="center">
+    <img src="images/graphical_abstract.pdf" width="90%"> <br>
+
+  *Graphical Abstract of LetItShine papaer.*
+
+</p>
+
+## Citations
 If our code helps your research or work, please consider citing our paper.
 The following are BibTeX references:
 
