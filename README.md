@@ -100,7 +100,7 @@ python main.py --batch_size 128 --name cafnet --mode MM --channel 7 --fusion_mod
 
 You can customize your training process further by combining these optional arguments with the basic training commands. For example:
 ```
-python main.py --mode BF --batch_size 128 --lr 1e-4 --epochs 50 --mixup
+python main.py --mode BF --batch_size 128 --lr 1e-4 --epochs 50 --mixup --channel 3
 ```
 
 ## Citations
