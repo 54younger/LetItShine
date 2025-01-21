@@ -5,7 +5,7 @@ Wenyi Lian, Joakim Lindblad, Christina Runow Stark, Jan-Michaél Hirsch, Nataša
 
 [[`Journal Link`](https://www.sciencedirect.com/science/article/pii/S001048252401583X)] [[`BibTeX`](#Citations)] [[`Preprint`](https://arxiv.org/abs/2407.01869)]
 
-Code and links to data to appear shortly.
+Links to data to appear shortly.
 
 ## Graphical Abstract
 
