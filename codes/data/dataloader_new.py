@@ -186,13 +186,13 @@ class MultiModalCancerDataset(Dataset):
             name = data['Name']
             BF_image, FL_image, MM_image = None, None, None
             if self.mode in ['BF', 'MM']:
-                BF_path = os.path.join(self.root, f'cache/BF/{name}.pt')
+                BF_path = os.path.join(self.root, f'/mnt/d/cache/BF/{name}.pt')
                 BF_image = torch.load(BF_path)
                 if self.mode == 'BF':
                     FL_image, MM_image = BF_image, BF_image
 
             if self.mode in ['FL', 'MM']:
-                FL_path = os.path.join(self.root, f'cache/FL/{name}.pt')
+                FL_path = os.path.join(self.root, f'/mnt/d/cache/FL/{name}.pt')
                 FL_image = torch.load(FL_path)
                 if self.mode == 'FL':
                     BF_image, MM_image = FL_image, FL_image

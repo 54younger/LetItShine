@@ -6,13 +6,13 @@ from torchvision.transforms import v2
 from tqdm import tqdm
 
 # 读取 CSV（以 train_split.csv 为例）
-csv_path = '../data/train_split.csv'
+csv_path = '../data/train.csv'
 image_root = '../data'
 df = pd.read_csv(csv_path)
 
 # 缓存目录
-bf_cache_dir = os.path.join(image_root, 'cache/BF')
-fl_cache_dir = os.path.join(image_root, 'cache/FL')
+bf_cache_dir = os.path.join(image_root, '/mnt/d/cache/BF')
+fl_cache_dir = os.path.join(image_root, '/mnt/d/cache/FL')
 os.makedirs(bf_cache_dir, exist_ok=True)
 os.makedirs(fl_cache_dir, exist_ok=True)
 
