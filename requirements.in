@@ -1,0 +1,13 @@
+cffi
+gmpy2
+mkl-fft
+mkl-random
+pip-tools
+pipdeptree
+torchmetrics
+torch
+triton
+numpy
+filelock
+packaging
+typing_extensions

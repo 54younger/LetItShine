@@ -1,0 +1,12 @@
+*.jpg
+*.jpeg
+*.png
+*.gif
+*.pyc
+*.log
+*.json
+*.wandb
+*.yaml
+*.zip
+*.txt
+*.yml

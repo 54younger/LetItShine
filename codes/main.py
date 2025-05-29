@@ -8,7 +8,7 @@ import os
 import wandb
 import argparse
 import shutil
-from data.dataloader import MultiModalCancerDataset
+from data.dataloader_new import MultiModalCancerDataset
 from torch.utils.data import DataLoader, WeightedRandomSampler
 from train import train
 # from utils import LayerNorm2d
@@ -22,9 +22,9 @@ import csv
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
 parser = argparse.ArgumentParser()
-parser.add_argument('--path_to_train_csv', default='../folds')
-parser.add_argument('--path_to_val_csv', default='../folds')
-parser.add_argument('--path_to_test_csv', default='../folds')
+parser.add_argument('--path_to_train_csv', default='../data')
+parser.add_argument('--path_to_val_csv', default='../data')
+parser.add_argument('--path_to_test_csv', default='../data')
 
 parser.add_argument('--path_to_train_images', default='../data')
 parser.add_argument('--path_to_val_images', default='../data')
@@ -35,7 +35,7 @@ parser.add_argument('--checkpointFL_path', default="./runs/FL_res50_e50/checkpoi
 parser.add_argument('--checkpointE_path', default="./runs/E_norm/checkpoint_0034.pth.tar")
 parser.add_argument('--checkpointD_path', default="./runs/imagenet_simclr/checkpoint_0023.pth.tar")
 
-parser.add_argument('--crop_size', type=int, default=224) #change crop size to 224x224,shift
+parser.add_argument('--crop_size', type=int, default=128) #change crop size to 224x224,shift
 parser.add_argument('--epochs', type=int, default=30)
 parser.add_argument('--batch_size', type=int, default=256)
 parser.add_argument('--lr', type=float, default=8e-5)
@@ -70,9 +70,9 @@ def main(args):
         log_path = f'logs/{args.name}_{mode_name}_{args.run_name}/fold_{i+1}'
         os.makedirs(log_path, exist_ok=True)
 
-        path_to_train_csv = f'{args.path_to_train_csv}/fold_{i+1}/train.csv'
-        path_to_val_csv = f'{args.path_to_val_csv}/fold_{i+1}/val.csv'
-        path_to_test_csv = f'{args.path_to_test_csv}/fold_{i+1}/test.csv'
+        path_to_train_csv = f'{args.path_to_train_csv}/train_split.csv'
+        path_to_val_csv = f'{args.path_to_val_csv}/val_split.csv'
+        path_to_test_csv = f'{args.path_to_test_csv}/test_split.csv'
 
         train_df = pd.read_csv(path_to_train_csv)
         val_df = pd.read_csv(path_to_val_csv)
