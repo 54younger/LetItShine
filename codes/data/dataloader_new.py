@@ -186,27 +186,21 @@ class MultiModalCancerDataset(Dataset):
             name = data['Name']
             BF_image, FL_image, MM_image = None, None, None
             if self.mode in ['BF', 'MM']:
-                BF_path = os.path.join(self.root, f'./BF/train/{name}')
-                BF_image = Image.open(BF_path)
-            
-                warnings.filterwarnings("ignore", category=UserWarning, module="PIL.TiffImagePlugin")
-                BF_image = self.transform_BF(BF_image)
+                BF_path = os.path.join(self.root, f'cache/BF/{name}.pt')
+                BF_image = torch.load(BF_path)
                 if self.mode == 'BF':
                     FL_image, MM_image = BF_image, BF_image
 
             if self.mode in ['FL', 'MM']:
-                FL_path = os.path.join(self.root, f'./FL/train/{name}')
-                FL_image = Image.open(FL_path)
-                FL_image = FL_image.convert("RGB")
-                FL_image = self.transform_FL(FL_image)
+                FL_path = os.path.join(self.root, f'cache/FL/{name}.pt')
+                FL_image = torch.load(FL_path)
                 if self.mode == 'FL':
                     BF_image, MM_image = FL_image, FL_image
 
+
             if self.mode == 'MM':
-                if self.split == 'cl':
-                    MM_image = [torch.cat([bf, fl], dim=0) for bf, fl in zip(BF_image, FL_image)]
-                else:
-                    MM_image = torch.cat([BF_image, FL_image], dim=0)
+                MM_image = torch.cat([BF_image, FL_image], dim=0)
+
 
             if self.split == 'train':
                 BF_image = self.transform_train(BF_image)

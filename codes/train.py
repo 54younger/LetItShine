@@ -12,6 +12,7 @@ import shutil
 import wandb
 import torchvision.utils as tvutils
 from test import test
+from tqdm import tqdm
 
 def mixup_data(x, y, alpha=1.0, device=None):
     '''Returns mixed inputs, pairs of targets, and lambda'''
@@ -43,7 +44,8 @@ def train(model, optimizer, scheduler, train_dataloader, val_dataloader, use_mix
 
     print(f'start training: {mode_name}, name: {name}, run_name:{run_name}')
     for epoch in range(epochs):
-        for i, data in enumerate(train_dataloader):
+        print(f"\nEpoch {epoch+1}/{epochs} -------------------------")
+        for i, data in enumerate(tqdm(train_dataloader, desc=f"Epoch {epoch+1}/{epochs}")):
             image = data[mode].to(device)
             label = data['label'].to(device).float()
 
