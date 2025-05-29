@@ -144,7 +144,8 @@ class CAFNet(nn.Module):
         self.name = 'cafnet'
         self.dropout = nn.Dropout(0.3)
         self.dropout2d = nn.Dropout2d(0.5)
-        c_BF, c_FL = 3, channel-3 # for RGB and RGBa
+        c_BF, c_FL = 3, 3
+
         
         if checkpoint_BF is not None:
             print("BF:Using contrastive learning...")
